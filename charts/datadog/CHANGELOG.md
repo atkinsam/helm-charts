@@ -1,5 +1,9 @@
 # Datadog changelog
 
+## 3.271.0
+
+* Add `datadog.gpuMonitoring.amd.enabled` to monitor AMD GPUs with `datadog.gpuMonitoring.enabled` (requires Agent 7.86.0+). It sets `DD_GPU_AMD_ENABLED=true` and `AMD_VISIBLE_DEVICES=all` on the core agent, and uses `datadog.gpuMonitoring.amd.runtimeClassName` (default `amd`) as the agent pod runtime class instead of `datadog.gpuMonitoring.runtimeClassName`. Rendering fails on older Agent versions unless `agents.image.doNotCheckTag` is set. Clusters mixing NVIDIA and AMD GPU nodes, GKE Autopilot and GDC are not supported.
+
 ## 3.270.0
 
 * `datadog.privateActionRunner.splitEnabled` now defaults to `true` on Agent 7.84.0+. Set `splitEnabled: false` to opt back into the monolithic runner.
